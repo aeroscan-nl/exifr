@@ -641,7 +641,7 @@ module EXIFR
 
       def rational(n, d)
         if d == 0 # allow NaN and Infinity
-          n.to_f.quo(d)
+          n.to_f.quo(1) if n == 0 else n.to_f.quo(d)
         else
           Rational.respond_to?(:reduce) ? Rational.reduce(n, d) : n.quo(d)
         end
