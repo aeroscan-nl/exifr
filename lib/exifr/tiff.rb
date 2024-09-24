@@ -343,7 +343,9 @@ module EXIFR
     end
 
     def self.rational(n, d)
-      if d == 0
+      if n == 0
+        n.quo(1)
+      elsif d == 0
         n.to_f / d.to_f
       elsif Rational.respond_to?(:reduce)
         Rational.reduce(n, d)
